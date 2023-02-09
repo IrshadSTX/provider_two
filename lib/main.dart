@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_two/provider/provider_data.dart';
 import 'package:provider_two/screens/user.dart';
 
 void main(List<String> args) {
@@ -10,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: UserPage(),
-      theme: ThemeData(primarySwatch: Colors.amber),
+    return ChangeNotifierProvider(
+      create: (context) => DataProvider(),
+      child: MaterialApp(
+        home: UserPage(),
+        theme: ThemeData(primarySwatch: Colors.amber),
+      ),
     );
   }
 }

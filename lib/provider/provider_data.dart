@@ -1,8 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
-class DataProvider with ChangeNotifier {
+class DataProvider extends ChangeNotifier {
   int _x = 0;
-  int get x => x;
+  int get x => _x;
   void incrementX() {
     _x++;
     notifyListeners(); // update() setState()
