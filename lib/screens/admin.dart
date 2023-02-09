@@ -1,5 +1,7 @@
 //remove items
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_two/provider/provider_data.dart';
 import 'package:provider_two/screens/user.dart';
 
 class AdminPage extends StatelessWidget {
@@ -27,11 +29,13 @@ class AdminPage extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              Text(
-                '0',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+            children: [
+              Consumer<DataProvider>(builder: (context, removeX, child) {
+                return Text(
+                  removeX.x.toString(),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                );
+              }),
               Text('Total',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ],
@@ -40,7 +44,10 @@ class AdminPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<DataProvider>(context, listen: false)
+                      .decrementX();
+                },
                 child: Icon(Icons.remove),
               ),
               ElevatedButton(

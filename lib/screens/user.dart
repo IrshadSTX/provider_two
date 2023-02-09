@@ -32,7 +32,10 @@ class UserPage extends StatelessWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<DataProvider>(context, listen: false)
+                        .incrementX();
+                  },
                   child: const Icon(Icons.add),
                 ),
                 const Spacer(),
@@ -56,11 +59,12 @@ class UserPage extends StatelessWidget {
                 Consumer<DataProvider>(builder: (context, providerData, child) {
                   return Text(
                     providerData.x.toString(),
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   );
                 }),
-                Spacer(),
-                Text('Total',
+                const Spacer(),
+                const Text('Total',
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ],

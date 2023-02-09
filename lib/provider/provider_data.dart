@@ -9,4 +9,9 @@ class DataProvider extends ChangeNotifier {
     _x++;
     notifyListeners(); // update() setState()
   }
+
+  void decrementX() {
+    _x--;
+    notifyListeners();
+  }
 }
